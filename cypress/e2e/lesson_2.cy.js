@@ -36,7 +36,7 @@ describe('Авторизация',() => {
 })
 */
 
-/*
+
 //Home task 9
 //Напишите тест на окно Авторизации https://www.beaxy.com/
 
@@ -44,7 +44,7 @@ describe('Autorithation', () => {
     it('login', () => {
         cy.viewport(1600,900);
         cy.visit(' https://www.beaxy.com/');
-        cy.get('span.header-btn__login').click();
+        cy.get('span.header-btn__login',{ timeout: 10000 }).click();
         cy.get('#popUp-login-email').type('filho@mail.ua');
         cy.get('#popUp-login-password').type('1234Qwer%');
         cy.get('#login-checkbox').click();
@@ -53,7 +53,7 @@ describe('Autorithation', () => {
     })
 })
 
-
+/*
 //Напишите тест на страницу careers https://www.beaxy.com/careers/ , 
 //где будут проверены все заголовки h1/h2/h3 на странице
 
@@ -88,7 +88,7 @@ describe('blog',() => {
 }
 */
 
-
+/*
 //Home task 10
 
 describe('Calculator',() => {
@@ -99,6 +99,11 @@ describe('Calculator',() => {
         cy.get('[data-name="ETC"]').click();
         cy.get('[placeholder="Enter amount"]').clear().type('33');
         cy.get('span.widget__output-data').should('text', "30603.72809051");
+        cy.get('[data-active-crypto="ETCBTC"]').click();
+        cy.get('[data-name="ZEC"]').click();
+        cy.get('[placeholder="Enter amount"]').clear().type('66');
+        cy.get('span.widget__output-data').should('text', "23783.78378378");
         //cy.get('.cacl-btn-name-crypto').click();
     })
 })
+*/
