@@ -56,16 +56,16 @@ describe('multiplex social networks', () => {
     })
     it('google', () => {
         cy.get('[href="https://auth2.multiplex.ua/galogin"]').should('be.visible').click();
-        cy.get('[head base]').should('have.attr', 'href', 'https://accounts.google.com/')
+        cy.get('head base', {timeout:5000}).should('have.attr', 'href', 'https://accounts.google.com/')
     })
 
     it('facebook', () => {
         cy.get('[class="wrapper-icon-open-id"]:not([id="google-signin-button"]').should('be.visible').click();
-        cy.get('[h1 a]').should('have.attr', 'href', 'https://www.facebook.com/');
+        cy.get('h1 a').should('have.attr', 'href', 'https://www.facebook.com/');
     }) 
 
-    it.only('apple', () => {
+    it('apple', () => {
         cy.get('[href="https://auth2.multiplex.ua/aplogin"]').should('be.visible').click();
-        cy.get('[head title]').should('have.text', 'Вход в систему с Apple ID');
+        cy.contains('Используйте Apple ID для входа в приложение');
     }) 
 })
