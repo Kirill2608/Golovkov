@@ -20,6 +20,10 @@
 */
 
 //Домашка
+/*Comments
+1) Я бы тут заменила "button._3omZ_". этот локатор, он будет нестабильным.
+Тест у меня прошел и запасился, отлично!
+*/
 
 describe('Autoriz',() => {
    /* beforeEach(() => {
@@ -35,6 +39,21 @@ describe('Autoriz',() => {
         cy.get('[data-testid="buttonElement"]').click();
 
     }) */
+    
+    
+    /*Comments
+    1) Заменить нужно бы локатор cy.get('[id^="comment"][data-hook="comment-content"] span span').eq(0).should('text','Все-таки получилось)');
+    на вот такой можно
+     cy.get('[data-id="rich-content-viewer"]', {
+      timeout: 5000,
+    })
+      .eq(1)
+      
+      2) И вот тут можно было бы заменить .should('text','Все-таки получилось) на "have.text"
+      
+      Молодец!
+    
+    */
     it('add comment',() => {
         cy.viewport(1900,1200);
         cy.visit('https://yevheniiahlovatska.editorx.io/web-practice/blog');
