@@ -37,6 +37,32 @@ it.only('test-4', () => {
 
 //Домашка
 /*
+Comments: 
+1) Тут мы снова столкнулись с особенностями cypress он немного подругому работает с iframes, 
+если ты внимательно посмотришь в дом, то заметишь что вся cart widget находится в iframe.
+Можно было сдлеать вот так, но вы еще не проходили, сегодня возможно вам немного  Стас расскажет:
+
+it('AddCard', () => {
+        cy.viewport(1600,900);
+        cy.visit('https://yevheniiahlovatska.editorx.io/web-practice/product-page/croc-clutch');
+        cy.wait(6000);
+        //Добавьте товар через кнопку add to card
+        cy.get('[data-hook="add-to-cart"]').wait(2000).click();
+        //Получить iframe
+        cy.get('iframe')
+        .then(($iframe) => {
+          const $body = $iframe.contents().find('body');
+          //Проверить что миникарт есть
+          const miniCart = cy.wrap($body).find('.minicart');
+          expect(miniCart).to.exist;
+          //Взять cart-widget-name и его текст проверить что товар называется корректно
+          cy.wrap($body).find('[data-hook="cart-widget-name"]').then((el) => {
+            expect(el.text()).to.be.equal(' Croc Clutch ');
+          })
+        })
+      });
+
+
 describe('shop', () => {
     it('add to card', () => {
         cy.viewport(1200,900);
@@ -49,6 +75,16 @@ describe('shop', () => {
     })
 })
 */
+
+
+/*Comments:
+1) Вижу что у тебя такая же проблема с кросс 
+The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.
+У cypress есть особенность они не совсем поддерживают кросс навигацию, для того чтобы это поддержать есть эксперимент 
+experimentalSessionAndOrigin: true, его нужно добавить в cypress.config.js. в раздел module.exports = defineConfig({}):
+на лекции рассмотрите некоторые варианты.
+*/
+
 
 describe('multiplex social networks', () => {
     beforeEach(() => {
