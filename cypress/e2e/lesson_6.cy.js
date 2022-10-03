@@ -1,18 +1,18 @@
 //для того чтоб все команды были видны в сплывающих окнах
 ///<reference types = "Cypress"/> 
-import { faker } from '@faker-js/faker'
-import { invoke } from 'cypress/types/lodash';
+// import { faker } from '@faker-js/faker'
+// import { invoke } from 'cypress/types/lodash';
 
 
-const randomEmail = faker.internet.email();
-    const randomName = 'AutomationTest' + faker.name.fullName();
-    const randomLastName = faker.name.lastName();
-    const id = faker.datatype.uuid();
-    const img = faker.image.avatar();
-    // data
-    // bithday
-    // password
-    const arr = faker.helpers.arrayElement(['free','toy','length'])
+// const randomEmail = faker.internet.email();
+//     const randomName = 'AutomationTest' + faker.name.fullName();
+//     const randomLastName = faker.name.lastName();
+//     const id = faker.datatype.uuid();
+//     const img = faker.image.avatar();
+//     // data
+//     // bithday
+//     // password
+//     const arr = faker.helpers.arrayElement(['free','toy','length'])
 
 /*
 describe('sdsd',() => {
@@ -31,8 +31,12 @@ describe('sdsd',() => {
     })
     cy.get('[onclick="myFunction()"]').click();
         cy.on('window:confirm',(str)=>{
-            expect(str).to.equal('Press aqweqwe')
-        })
+            expect(str).to.equal('Press aqweqwe')  // проверкав сплывающих алертов в браузере
+        });
+
+    it('Drag and drop', => {
+        cy.get('jdjjdvnv').drag('kdfjkdf');
+    })    
 })
 */
 
