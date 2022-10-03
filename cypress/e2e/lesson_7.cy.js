@@ -1,6 +1,4 @@
-//const { invoke } = require("cypress/types/lodash");
-
-//const { should } = require("chai");
+//Домашка 
 
 describe('react-slider',() => {
     beforeEach(() => {
@@ -8,7 +6,7 @@ describe('react-slider',() => {
         cy.visit('https://mui.com/material-ui/react-slider/');
     })
     it('Small steps', () => {
-        cy.scrollTo(0,2100);
+        cy.scrollTo('0%','20%');
         cy.wait(3000);
         cy.get('#main-content div:nth-child(12) div:nth-child(2) [class^="MuiSlider-track"]').should('be.visible')
         .invoke('attr', 'style', 'left: 0%; width: 93.3333%;')
@@ -26,7 +24,7 @@ describe('react-slider',() => {
     });
 
     it('Custom marks',() => {
-        cy.scrollTo(0,2300);
+        cy.scrollTo('0%','20%');
         cy.wait(3000);
         cy.get('#main-content div:nth-child(14) div:nth-child(2) div span span:nth-child(2)').should('be.visible')
         .invoke('attr', 'style', 'left: 0%; width: 100%;')
@@ -37,7 +35,7 @@ describe('react-slider',() => {
     });
 
     it('Range slider', () => {
-        cy.scrollTo(0,4000);
+        cy.scrollTo('0%','40%');
         cy.wait(3000);
         cy.get('#main-content div:nth-child(20) [class^="MuiSlider-root"] span:nth-child(3)').should('be.visible')
         .invoke('attr', 'style', 'left: 0%;')
@@ -58,7 +56,7 @@ describe('react-slider',() => {
     });
 
     it('Slider with input field', () => {
-        cy.scrollTo(0,4500);
+        cy.scrollTo('0%','45%');
         cy.wait(3000);
         // сделал и эти, но слайдер и без них перемещается
         // cy.get('#main-content div:nth-child(24) [class*="track"]').should('be.visible')
@@ -67,19 +65,20 @@ describe('react-slider',() => {
         // cy.get('#main-content div:nth-child(24) [class*="thumb"] ').should('be.visible')
         // .invoke('attr', 'style', 'left: 100%; width: 0%;')
         // .should('attr', 'style', 'left: 100%; width: 0%;');
-        cy.get('#main-content div:nth-child(24) [class*="input"] ')
+        cy.get('#main-content div:nth-child(24) [class*="input"]')//.scrollIntoView({offset:{top:-300}})
         .should('be.visible')
         .clear()
         .type('100')
         .should('have.value', '100');
-        cy.get('#main-content div:nth-child(24) input[data-index]')
+        //cy.get('#main-content div:nth-child(24) input[data-index]')
+        cy.get('#main-content div:nth-child(24) [data-focusvisible]').find('input')
         .should('have.attr', 'value', '100')
         .and('have.attr', 'aria-valuenow', '100')
 
     });
     it('Music player', () => {
         cy.wait(3000);
-        cy.scrollTo(0,5500);
+        cy.scrollTo('0%','60%');
         cy.get('#main-content div:nth-child(30) [class^="MuiSlider-track"]').should('be.visible')
         .invoke('attr', 'style', 'left: 0%; width: 100%;')
         .should('attr', 'style', 'left: 0%; width: 100%;');
