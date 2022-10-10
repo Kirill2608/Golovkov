@@ -108,6 +108,17 @@ describe('gorest.co.in', () => {
         })
     });
 
+    it('check user create', () => {
+        cy.request({
+            method:'GET',
+            url:`https://gorest.co.in/public/v2/users/`+client_id,
+            headers:{Authorization:'Bearer '+token}})
+            .then((response) => {
+            expect(client_id).to.have.equal(response.body.id)
+            expect(response).to.have.property('status', 200)
+        })
+    });
+
     it('PATCH update user', () => {
         cy.request({
             method:'PATCH', 
@@ -129,6 +140,17 @@ describe('gorest.co.in', () => {
             headers:{Authorization:'Bearer '+token}})
             .then((response) => {
             expect(response).to.have.property('status', 204);
+        })
+    });
+
+    it('check delete user', () => {
+        cy.request({
+            method:'GET',
+            url:`https://gorest.co.in/public/v2/users/`,
+            headers:{Authorization:'Bearer '+token}})
+            .then((response) => {
+            expect(response).to.have.property('status', 200)
+            expect(response.body[0].id).to.not.equal(client_id)
         })
     })
 })
