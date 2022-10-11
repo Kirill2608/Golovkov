@@ -85,6 +85,16 @@ cy.request({
 
 //Домашка
 
+/*
+Comments:
+1. body выноси в константы так будет легче вопринимать 
+ body:{name:"Tenali Ramakrishna", gender:"male", email:generateEmail, status:"active"},
+2. Где интерполяция (литерал) `https://gorest.co.in/public/v2/users/`+client_id, => `https://gorest.co.in/public/v2/users/${client_id}`
+3. Cылку на сервер можно вынести в константу => const baseUrl]= https://gorest.co.in/public/v2/users/
+а путь передавать будет как то так `${baseUrl}\path`
+3. Отлично.
+*/
+
 describe('gorest.co.in', () => {
     const generateEmail = faker.internet.email();
     const emailNew = faker.internet.email();
