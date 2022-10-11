@@ -106,6 +106,31 @@ describe('STORE', () => {
             expect(message).have.eq("9")
         })
     });
+    
+    /*
+    Comments:
+    
+    
+    1)  expect(response.body).to.contain.key(
+          "totvs"
+          //   "sold",
+          //   "string",
+          //   "null",
+          //   "avaliable",
+          //   "pending",
+          //   "available",
+          //   "not available",
+          //    "connector_up",
+          //   "Available",
+          //   "soldout"
+        );
+        
+        и еще если ты делаешь проверку на 
+    expect(response.body).to.have.all.keys. то тебе надо все и поля передать, иначе падает
+    
+     expect(response.body).to.have.any.key("totvs");
+    
+  */  
 
     it('GET /inventory', () => {
         cy.request('GET', 'https://petstore.swagger.io/v2/store/inventory').then((response) => {
