@@ -28,3 +28,20 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // failing the test
     return false
   })
+
+  Cypress.Commands.add('textInput', (locator, text) => {
+    cy.get(`${locator}`,{timeout : 4000}).should('be.visible').type('text')
+  })
+
+  /**
+   * Search for a locator by part of a link
+   * @param partOfLink Link text
+   */
+  //Xpath
+  Cypress.Commands.add('linkSearch1', (partOfLink) => {
+    cy.get(`//a[contains(text(),'${partOfLink}')]`)
+  })
+  //CSS
+  Cypress.Commands.add('linkSearch2', (partOfLink) => {
+    cy.get(`a[href*='${partOfLink}']`,{timeout:4000}).should('be.visible').eq(1).click()
+  })
