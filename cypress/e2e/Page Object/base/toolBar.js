@@ -1,16 +1,28 @@
 const selectors = {
     buttonMenuHome:'#mainnav > ul > li:nth-child(2)',
-    homeSubMenu:'#mainnav > ul > li:nth-child(2) > ul',
-    linkOnPageHome:"#mainnav > ul > li:nth-child(2) > ul > li > a",
     buttonMenuShop:'#mainnav > ul > li:nth-child(3)',
-    shopSubMenu:'#mainnav > ul > li:nth-child(3) > ul',
-    linkOnPageShop:"#mainnav > ul > li:nth-child(3) > ul > li > a",
     buttonMenuProducts:'#mainnav > ul > li:nth-child(4)',
-    productsSubMenu:'#mainnav > ul > li:nth-child(4) > ul',
-    linkOnPageProduct:"#mainnav > ul > li:nth-child(4) ul li a",
     buttonMenuFeatures:'#mainnav > ul > li:nth-child(5)',
+    buttonMenuPages:'#mainnav > ul > li:nth-child(6)',
+    buttonMenuBlogs:'#mainnav > ul > li:nth-child(7)',
+
+
+    homeSubMenu:'#mainnav > ul > li:nth-child(2) > ul',
+    shopSubMenu:'#mainnav > ul > li:nth-child(3) > ul',
+    productsSubMenu:'#mainnav > ul > li:nth-child(4) > ul',
     featuresSubMenu:'#mainnav > ul > li:nth-child(5) > ul',
-    linkOnPageFeatures:"#mainnav > ul > li:nth-child(5) > ul a"
+    featuresChildMenu:'#mainnav > ul > li:nth-child(5) > ul ul',
+    pagesSubMenu:'#mainnav > ul > li:nth-child(6) > ul',
+    pagesChildMenu:'#mainnav > ul > li:nth-child(6) > ul li ul',
+    blogsSubMenu:'#mainnav > ul > li:nth-child(7) > ul',
+
+
+    linkOnPageHome:"#mainnav > ul > li:nth-child(2) > ul > li > a",
+    linkOnPageShop:"#mainnav > ul > li:nth-child(3) > ul > li > a",
+    linkOnPageProduct:"#mainnav > ul > li:nth-child(4) ul li a",
+    linkOnPageFeatures:"#mainnav > ul > li:nth-child(5) > ul ul li a",
+    linkOnPagePages:"#mainnav > ul > li:nth-child(6) > ul ul li a",
+    linkOnPageBlogs:"#mainnav > ul > li:nth-child(7) > ul a"
 };
 
 class toolBar {
@@ -45,13 +57,13 @@ class toolBar {
         return cy.get(selectors.linkOnPageFeatures).contains(text)
     };
 
-    // pageInSectionPages(text) {
-    //     return cy.get("#mainnav > ul > li:nth-child(2) > ul > li > a").contains(text)
-    // };
+    pageInSectionPages(text) {
+        return cy.get(selectors.linkOnPagePages).contains(text)
+    };
 
-    // pageInSectionBlogs(text) {
-    //     return cy.get("#mainnav > ul > li:nth-child(2) > ul > li > a").contains(text)
-    // };
+    pageInSectionBlogs(text) {
+        return cy.get(selectors.linkOnPageBlogs).contains(text)
+    };
 
     openPageOnSelectionHome(namePage) {
         cy.get(selectors.buttonMenuHome).click;
@@ -74,8 +86,21 @@ class toolBar {
     openPageOnSelectionFeatures(namePage) {
         cy.get(selectors.buttonMenuFeatures).click;
         cy.get(selectors.featuresSubMenu).invoke('show');
-        //cy.get('#mainnav > ul > li:nth-child(5) > ul ul').invoke('show');
+        cy.get(selectors.featuresChildMenu).eq(0).invoke('show');
         this.pageInSectionFeatures(namePage).click();
+    };
+
+    openPageOnSelectionPages(namePage) {
+        cy.get(selectors.buttonMenuPages).click;
+        cy.get(selectors.pagesSubMenu).invoke('show');
+        cy.get(selectors.pagesChildMenu).eq(0).invoke('show');
+        this.pageInSectionPages(namePage).click();
+    };
+
+    openPageOnSelectionBlogs(namePage) {
+        cy.get(selectors.buttonMenuBlogs).click;
+        cy.get(selectors.blogsSubMenu).invoke('show');
+        this.pageInSectionBlogs(namePage).click();
     };
 
 }module.exports = new toolBar();
