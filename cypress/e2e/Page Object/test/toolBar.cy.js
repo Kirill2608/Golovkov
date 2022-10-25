@@ -1,18 +1,18 @@
 import toolBar from "../base/toolBar";
-import burger from "../base/toolBar"
+import burger from "../base/burger"
 
 /// <reference types = 'Cypress'/>
 
 describe('Toolbar', () => {
  
-    before(() => {
+    beforeEach(() => {
       cy.visit('http://autopract.com');
       cy.viewport(1280, 1024);
       cy.wait(3000);
       cy.get('[aria-label="Close"]', {timeout: 5000}).click();
      });
 
-     it('open page home/beauty', () => {
+    it('open page home/beauty', () => {
         toolBar.openPageOnSelectionHome('beauty')
     });
 
@@ -36,7 +36,7 @@ describe('Toolbar', () => {
         toolBar.openPageOnSelectionBlogs(' no sidebar ')
     });
 
-    it.only('burger menu', () => {
+    it('burger menu', () => {
         burger.buttonOpenBurgerMenu.should('be.visible').click();
         burger.burgerMenu.should('be.visible');
         //burger.buttonOpenSubMenuBags.trigger('mouseenter')
