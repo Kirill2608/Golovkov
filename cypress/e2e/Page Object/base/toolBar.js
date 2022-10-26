@@ -1,3 +1,37 @@
+/*
+Comments:
+Молодец!
+
+Что еще можно было улучшить, можно было оптимизировать вот эти методы:ё
+  openPageOnSelectionProducts(namePage) {
+        cy.get(selectors.buttonMenuProducts).click;
+        cy.get(selectors.productsSubMenu).invoke('show');
+        this.pageInSectionProducts(namePage).click();
+    };
+
+    openPageOnSelectionFeatures(namePage) {
+        cy.get(selectors.buttonMenuFeatures).click;
+        cy.get(selectors.featuresSubMenu).invoke('show');
+        cy.get(selectors.featuresChildMenu).eq(0).invoke('show');
+        this.pageInSectionFeatures(namePage).click();
+    };
+    
+    Например:
+    
+    Пример реализации:
+    openPage(buttonMenuLocator, subMenuLocator, namePage) {
+        cy.get(buttonMenuLocator).click();
+        cy.get(subMenuLocator).invoke('show');
+        this.pageInSectionProducts(namePage).click();
+    }
+    
+    пример использования:
+    openPageOnSectionProducts(namePage) {
+    this.openPage(selectorsOfToolBar.buttonMenuProducts, selectorsOfToolBar.subMenuProducts, namePage);
+    } 
+
+*/
+
 const selectors = {
     buttonMenuHome:'#mainnav > ul > li:nth-child(2)',
     buttonMenuShop:'#mainnav > ul > li:nth-child(3)',
