@@ -1,3 +1,16 @@
+/*Comments:
+Можно было бы часть кода спрятать в классе 
+
+ it('burger menu', () => {
+        burger.buttonOpenBurgerMenu.should('be.visible').click();
+        burger.burgerMenu.should('be.visible');
+        //burger.buttonOpenSubMenuBags.trigger('mouseenter')
+        burger.buttonOpenSubMenuBags.should('be.visible').click();
+        burger.bergerSubMenuBags.invoke('show').should('be.visible');
+        burger.buttonBergerMenuBack.should('be.visible').click().should('be.hidden');
+    })
+*/
+
 import toolBar from "../base/toolBar";
 import burger from "../base/burger"
 
