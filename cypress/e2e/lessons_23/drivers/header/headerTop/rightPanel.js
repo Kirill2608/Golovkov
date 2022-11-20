@@ -1,3 +1,35 @@
+/*
+Comments:
+
+login () {
+        cy.get(selectors.login).should('be.visible').click();
+        cy.get(selectors.loginEmail).should('be.visible').eq(0).click();
+        cy.get(selectors.inputEmail).should('be.visible').type('testtestov@i.ua').should('value','testtestov@i.ua');
+        cy.get(selectors.inputPass).should('be.visible').type('380509876544').should('value','380509876544');
+        cy.get(selectors.buttonSubmit).should('be.visible').click();
+    }
+    
+ 1) у тебя получились папарметры захардкодены, так не делай, все параметры если они меняются должны передаваться через методю.
+ 2) еще я бы разнесла на несколько методов потому что можно было бы покрыть больше одного кейса:
+      0. мог бы быть кейс просто проверки навигации отдельным методом - cy.get(selectors.login).should('be.visible').click();
+      1. проверка ввода имейла может быть отдельным методом, потому что ты можешь проверять как негативные так и позитивные кейсы
+      2. проверка ввода пароля тоже может быть отдельным методом и быть как негативным так и позитивным сценарием
+      3. можно было бы вынести или в кастомные команды или отдельным методом и сделать его более уникальным, 
+      так как сабмит кнопок но с разными локаторами может быть больше одной
+      
+      Итог: и потом реализовать отдельный метод который будет у тебя вызывать набор методов которые будут делать логин 
+      login(email, pass, phone) {
+      this.openLoginDialog(); //  - тут ты можешь обращаться через this. у тебя метод принадлежит классу   
+      this.typeEmail(email);
+      this.typePassword(pass);
+      this.typePhone(phone);
+      this.clickOnSubmitButton();  -  или кастомный вызов команды
+      }
+      
+
+
+*/
+
 const selectors = {
 login: '#profile_desktop button',
 loginEmail: '.checkout-button-main-l--login',
